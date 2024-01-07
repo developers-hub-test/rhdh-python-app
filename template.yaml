@@ -1,1 +1,44 @@
 
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: python-app-template
+  title: python-Application
+  description: Create a new Node.js application
+spec:
+  owner: nagesh
+  type: service
+  parameters:
+    - title: Application Name
+      name: appName
+      required: true
+  properties:
+    appName:
+      type: string
+  steps:
+    - id: create-python-app
+      name: Create Python App Directory
+      action: exec:create-directory
+      inputs:
+        directory: ${{ parameters.appName }}
+    - id: create-app-file
+      name: Create app.py File
+      action: create:file
+      inputs:
+        path: ${{ parameters.appName }}/app.py
+        content: |
+          print("Hello world!")
+    - id: install-requirements
+      name: Install Requirements
+      action: exec:pip
+      inputs:
+        command: install
+        args:
+          - Flask
+        directory: ${{ parameters.appName }}
+    - id: run-app
+      name: Run Application
+      action: exec:python
+      inputs:
+        args:
+          - ${{ parameters.appName }}/app.py
