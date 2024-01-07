@@ -1,1 +1,10 @@
-
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rhdh-python-app
+  annotations:
+    github.com/project-slug: rhdh-python-test/rhdh-node-app
+spec:
+  type: other
+  lifecycle: unknown
+  owner: nagesh
