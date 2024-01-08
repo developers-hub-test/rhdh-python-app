@@ -1,10 +1,39 @@
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: rhdh-python-app
+#   annotations:
+#     github.com/project-slug: developers-hub-test/rhdh-python-app
+# spec:
+#   type: other
+#   lifecycle: unknown
+#   owner: nagesh
+
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: rhdh-python-app
+  description: Users api
   annotations:
-    github.com/project-slug: developers-hub-test/rhdh-python-app
+    backstage.io/kubernetes-id: users-api
+  tags:
+    - python
+    - flask
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+    - url: https://metrics.example-org.com
+      title: metrics
+      icon: analytics
+      type: metrics-dashboard
+    - url: https://logs.example-org.com
+      title: logs
+      icon: assignment
+      type: logs-dashboard  
 spec:
-  type: other
-  lifecycle: unknown
-  owner: nagesh
+  type: service
+  lifecycle: production
+  owner: users-team
+  system: public-websites
